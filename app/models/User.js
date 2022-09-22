@@ -1,15 +1,7 @@
-import mongoose from "mongoose";
 import { UserModel } from "./UserModel.js";
 
-export async function connect() {
-  const conn = await mongoose.connect("mongodb://root:example@mongo:27017", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
-}
 
 export async function all() {
-  const conn = await connect();
 
   const users = await UserModel.find();
 
@@ -17,7 +9,6 @@ export async function all() {
 }
 
 export async function find(id) {
-  const conn = await connect();
 
   const user = await UserModel.findOne({ _id: id }, { password: 0 });
 
@@ -25,7 +16,6 @@ export async function find(id) {
 }
 
 export async function userFind(email) {
-  const conn = await connect();
 
   const user = await UserModel.findOne({
     email: email,
@@ -35,7 +25,6 @@ export async function userFind(email) {
 }
 
 export async function insertOne(user) {
-  const conn = await connect();
 
   await UserModel.create(user);
 
@@ -43,31 +32,22 @@ export async function insertOne(user) {
 }
 
 export async function updateOne(userId, pastriesCount) {
-  const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
-    { _id: userId },
-    { pastriesCount: pastriesCount }
-  );
+  await UserModel.updateOne({ _id: userId }, { pastriesCount: pastriesCount });
 
   return;
 }
 
 export async function updatePastries(userId, pastries) {
-  const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
-    { _id: userId },
-    { pastries: pastries }
-  );
+  await UserModel.updateOne({ _id: userId }, { pastries: pastries });
 
   return;
 }
 
 export async function updateWonPastries(userId, pastry) {
-  const conn = await connect();
 
-  await UserModel.findOneAndUpdate(
+  await UserModel.updateOne(
     { _id: userId },
     { $push: { wonPastries: pastry } }
   );

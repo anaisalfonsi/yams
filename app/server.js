@@ -2,6 +2,7 @@ import express from "express";
 import session from "express-session";
 import userRouter from "./routers/user.js";
 import loginRouter from "./routers/login.js";
+import { connect } from "./models/utils.js";
 
 const app = express();
 const port = 3002;
@@ -22,6 +23,10 @@ app.use(
 
 app.use("/", userRouter, loginRouter);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+connect()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Example app listening at http://localhost:${port}`);
+    });
+  })
+  .catch(console.error);

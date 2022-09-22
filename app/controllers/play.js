@@ -7,7 +7,7 @@ export default async function (req, res) {
 
   let { userId } = req.session;
 
-  const user = await find(userId);
+  let user = await find(userId);
 
   let userPastries = user.pastries;
 
@@ -158,11 +158,9 @@ export default async function (req, res) {
       }
     }
 
-    console.log(user.wonPastries.length);
-    
-    req.session.pastriesCount = user.wonPastries.length;
-    console.log(req.session.pastriesCount);
-    await updateOne(userId, req.session.pastriesCount);
+    user = await find(userId);
+    await updateOne(userId, user.wonPastries.length);
+    user = await find(userId);
 
     res.render("game", {
       dices: dicesLaunch,
