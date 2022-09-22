@@ -2,7 +2,7 @@ export default function(req, res){
 
     if(req.session.auth){
 
-        res.redirect('/play');
+        res.redirect('/game');
 
         return;
     }

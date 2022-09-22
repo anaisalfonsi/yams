@@ -23,6 +23,8 @@ app.use(
 
 app.use("/", userRouter, loginRouter);
 
+app.use(express.static("public"));
+
 connect()
   .then(() => {
     app.listen(port, () => {

@@ -17,7 +17,7 @@ export default async function (req, res) {
 
         if (match) {
           req.session.userId = user._id;
-          res.redirect("/play");
+          res.redirect("/game");
         } else {
           message = "Mot de passe incorrect";
           res.redirect("/login");

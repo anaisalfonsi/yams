@@ -26,6 +26,8 @@ export default async function (req, res) {
             };
 
             const newUser = await insertOne(userObj);
+
+            res.redirect("/login");
         } else {
             message = "Veuillez entrer le même mot de passe"
         }
