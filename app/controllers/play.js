@@ -23,7 +23,7 @@ export default async function (req, res) {
 
   const launch = async (dices) => {
     dices.map((dice) => {
-      dice.number = Math.floor(Math.random() * 6) + 1;
+      dice.number = Math.floor(Math.random() *6) + 1;
     });
     return dices;
   };
@@ -55,12 +55,17 @@ export default async function (req, res) {
     }
 
     for (let i = 0; i < pastriesNb; i++) {
+      user = await find(userId); // Je recup toutes les donnes en BDD pour le joueur co
       const random = Math.floor(Math.random() * 36) + 1;
       switch (true) {
         case random <= 1:
           userPastries.map((pastry) => {
             if (pastry.order === 1) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -72,7 +77,11 @@ export default async function (req, res) {
         case random <= 3:
           userPastries.map((pastry) => {
             if (pastry.order === 2) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -84,7 +93,11 @@ export default async function (req, res) {
         case random <= 6:
           userPastries.map((pastry) => {
             if (pastry.order === 3) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -96,7 +109,11 @@ export default async function (req, res) {
         case random <= 10:
           userPastries.map((pastry) => {
             if (pastry.order === 4) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -108,7 +125,11 @@ export default async function (req, res) {
         case random <= 15:
           userPastries.map((pastry) => {
             if (pastry.order === 5) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -120,7 +141,11 @@ export default async function (req, res) {
         case random <= 21:
           userPastries.map((pastry) => {
             if (pastry.order === 6) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -132,7 +157,11 @@ export default async function (req, res) {
         case random <= 28:
           userPastries.map((pastry) => {
             if (pastry.order === 7) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -144,7 +173,11 @@ export default async function (req, res) {
         case random <= 36:
           userPastries.map((pastry) => {
             if (pastry.order === 8) {
-              pastry.number -= 1;
+              if (pastry.number >= 1){ //Je verifie que il reste au moins 1 de la patisserie gagne
+                pastry.number -= 1;
+              } else {
+                i--; //je fait refaire un tour a la boucle for
+              }
             }
           });
           await updatePastries(userId, userPastries);
@@ -165,6 +198,6 @@ export default async function (req, res) {
     res.render("game", {
       dices: dicesLaunch,
       user: user,
-      message: message,
+      message: message
     });
 }

@@ -11,3 +11,5 @@ block content
         p #{message}
 
     p #{user.pastriesCount}
+        each users in user.WonPastries ? user : []
+            li= user.name
