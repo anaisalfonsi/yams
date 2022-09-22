@@ -61,6 +61,7 @@ export default async function (req, res) {
             userPastries.map((pastry) => {
               if (pastry.order === 1) {
                 if (pastry.number >= 1) {
+                  console.log("test");
                   //Je verifie que il reste au moins 1 de la patisserie gagne
                   pastry.number -= 1;
                 } else {

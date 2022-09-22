@@ -1,4 +1,9 @@
 db.users.find({})
+db.user.find({})
+db.users.find({})
+db.find.users({})
+db.find.user({})
+db.users.find({})
 test.users.find({})
 show databases
 users.find({})
