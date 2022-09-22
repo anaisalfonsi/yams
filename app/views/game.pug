@@ -1,13 +1,22 @@
 extends layouts/main.pug 
 
-block content
+block content 
     h1 Hello #{user.firstName}
-    ul
-        each dice in dices ? dices : []
-            li= dice.number
-    div 
-        a(href="/play") Jouer
-    div
-        p #{message}
+    div(class="game__container")
+        div
+            ul
+                each dice in dices ? dices : []
+                    li= dice.number
+            div 
+                a(href="/play") Jouer
+                a(href="/game") Arrêter
+            div
+                p #{message}
 
-    p #{user.pastriesCount}
+        div
+            h3 Pâtisseries gagnées : #{user.pastriesCount}
+            ul(class="patisseries")
+                each pastry in user.wonPastries
+                    li
+                        p=pastry.name
+                        img(src='/assets/images/' + pastry.img)

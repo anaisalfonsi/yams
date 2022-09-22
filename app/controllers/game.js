@@ -6,5 +6,22 @@ export default async function (req, res) {
 
   const user = await find(userId);
 
-  res.render("game", { user: user });
+  let dices = [
+    { id: 1, number: null },
+    { id: 2, number: null },
+    { id: 3, number: null },
+    { id: 4, number: null },
+    { id: 5, number: null },
+  ];
+
+  const launch = async (dices) => {
+    dices.map((dice) => {
+      dice.number = Math.floor(Math.random() * 6) + 1;
+    });
+    return dices;
+  };
+
+  const dicesLaunch = await launch(dices);
+
+  res.render("game", { dices: dicesLaunch, user: user });
 }

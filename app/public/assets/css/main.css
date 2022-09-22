@@ -1,0 +1,52 @@
+*, ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.game__container {
+    display: flex;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.game__container > div {
+    width: 100%;
+}
+
+.game__container > div:nth-child(2) {
+    max-width: 280px;
+}
+
+img {
+    width: 100%;
+    max-width: 250px;
+}
+
+.patisseries > li {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+@media (min-width: 992px) {
+    img {
+        width: 100%;
+        max-width: 100px;
+        height: 70px;
+        object-fit: cover;
+    }
+
+    .patisseries > li { 
+        flex-direction: row-reverse;
+        justify-content: start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+}
