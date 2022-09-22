@@ -13,11 +13,6 @@ block content
             div
                 p #{message}
 
-<<<<<<< HEAD
-    p #{user.pastriesCount}
-        each users in user.WonPastries ? user : []
-            li= user.name
-=======
         div
             h3 Pâtisseries gagnées : #{user.pastriesCount}
             ul(class="patisseries")
@@ -25,4 +20,3 @@ block content
                     li
                         p=pastry.name
                         img(src='/assets/images/' + pastry.img)
->>>>>>> main
