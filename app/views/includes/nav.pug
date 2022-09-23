@@ -1,9 +1,16 @@
-nav
-    ul 
-        li 
-            a(href="/") Home
-        li
-            a(href="/game") Jouer
+header
+    nav
+        div 
+            div 
+                a(href="/") Accueil
+            div
+                a(href="/game") Jouer
+        
         if user
-            li
-                a(href="/logout") Se déconnecter
+            div
+                div
+                    a(class="button2" href="/logout") Se déconnecter
+        else 
+            div
+                div
+                    a(class="button2" href="/login") Se connecter

@@ -1,17 +1,23 @@
 extends layouts/main.pug 
 
 block content 
-    h1 Hello #{user.firstName}
+    h1 Hello 
+        span(id="user-name") #{user.firstName}
+    div
+        p(class="message") #{message}
+
     div(class="game__container")
-        div
-            ul
+        div(id="les-des")
+            ul(class="des")
                 each dice in dices ? dices : []
-                    li= dice.number
-            div 
-                a(href="/play") Jouer
-                a(href="/game") Arrêter
-            div
-                p #{message}
+                    li
+                        span= dice.number
+            div(class="play-buttons") 
+                if user.pastriesCount < 50
+                    a(class="play-button button" href="/play") Jouer
+                    a(class="button" href="/game") Arrêter
+                else 
+                    p(class="text-orange") Vous avez fini le jeu, Bravo !
 
         div
             h3 Pâtisseries gagnées : #{user.pastriesCount}
