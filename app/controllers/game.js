@@ -12,8 +12,7 @@ export default async function (req, res) {
     { id: 3, number: null },
     { id: 4, number: null },
     { id: 5, number: null },
-  ];
-
+  ]
   const launch = async (dices) => {
     dices.map((dice) => {
       dice.number = Math.floor(Math.random() * 6) + 1;
