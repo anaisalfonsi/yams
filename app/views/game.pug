@@ -3,26 +3,38 @@ extends layouts/main.pug
 block content 
     h1 Hello 
         span(id="user-name") #{user.firstName}
-    div
-        p(class="message") #{message}
+    div(class="game-rules")
+        h4 Règles du jeu
+        ul(class="font-300") 
+            li Deux paires : 1 pâtisserie gagnée
+            li Un carré : 2 pâtisseries gagnées 
+            li Yams : 3 pâtisseries gagnées
+        p(class="mt-2 font-17") À 50 pâtisseries, le jeu s'arrête.
 
     div(class="game__container")
-        div(id="les-des")
-            ul(class="des")
+        div(id="dices__box")
+            p(class="message") #{message}
+            ul(class="dices")
                 each dice in dices ? dices : []
                     li
-                        span= dice.number
+                        span(class="d-none dice-nb")= dice.number
+                        span(class="dot")
+            
             div(class="play-buttons") 
                 if user.pastriesCount < 50
-                    a(class="play-button button" href="/play") Jouer
-                    a(class="button" href="/game") Arrêter
+                    if path === "/game"
+                        a(class="play-button button" href="/play") Jouer
+                    else 
+                        a(class="play-button button" href="/play") Rejouer
+                    a(class="stop-button button" href="/game") Arrêter
                 else 
-                    p(class="text-orange") Vous avez fini le jeu, Bravo !
+                    p(class="font-lg text-orange") Vous avez fini le jeu, Bravo !
 
         div
-            h3 Pâtisseries gagnées : #{user.pastriesCount}
-            ul(class="patisseries")
+            h3(class="mb-3") Pâtisseries gagnées : 
+                span(class="text-orange") #{user.pastriesCount}
+            ul(class="pastries")
                 each pastry in user.wonPastries
                     li
                         p=pastry.name
-                        img(src='/assets/images/' + pastry.img)
+                        img(src="/assets/images/" + pastry.img)

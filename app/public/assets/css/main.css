@@ -1,11 +1,19 @@
+:root {
+    --purple: #845EC2;
+    --darkPurple: #4B4453;
+    --orange: #FF8066;
+    --darkOrange: #c34a36;
+    --lightGray: #B0A8B9;
+}
+
 *, ul {
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #4B4453;
-    color: #B0A8B9;
+    background-color: var(--darkPurple);
+    color: var(--lightGray);
     position: relative;
 }
 
@@ -18,11 +26,11 @@ header {
     top: 0;
     width : 100%;
     height: 60px;
-    background-color: #4B4453;
+    background-color: var(--darkPurple);
     margin-bottom: 4rem;
     z-index: 10;
     transition: 0.5s ease-in;
-    border-bottom: 1px solid #FF8066;
+    border-bottom: 1px solid var(--orange);
 }
 
 nav {
@@ -40,21 +48,30 @@ nav > div:first-child {
     gap: 20px;
 }
 
+.login-reg__container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
 li {
     list-style-type: none;
 }
 
 a {
     text-decoration: none;
-    color: #B0A8B9;
+    color: var(--lightGray);
 }
 
 a:hover {
-    color: #FF8066;
+    color: var(--orange);
 }
 
 .link {
-    color: #FF8066;
+    color: var(--orange);
     text-decoration: underline;
 }
 
@@ -62,9 +79,20 @@ a:hover {
     text-decoration: none;
 }
 
-.text-orange {
+.font-17 {
+    font-size: 17px;
+}
+
+.font-lg {
     font-size: 23px;
-    color: #FF8066;
+}
+
+.font-300 {
+    font-weight: 300;
+}
+
+.text-orange {
+    color: var(--orange);
 }
 
 h3 {
@@ -94,25 +122,80 @@ h3 {
     right: 0;
 }
 
-.des {
+.game-rules {
+    position: absolute;
+    margin-top: 0.75rem;
+}
+
+.rules-btn {
+    background-color: var(--lightGray);
+    border: none;
+    border-radius: 3px;
+    width: 122px;
+    height: 29px;
+    color: var(--darkOrange);
+}
+
+.dices {
     display: flex;
 }
 
-.des > li {
+.dices > li {
+    border: 2px solid var(--lightGray);
+    border-radius: 10px;
+    margin-right: 25px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--lightGray);
+}
+
+.one-dot {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
-    border: 2px solid #B0A8B9;
-    border-radius: 10px;
-    margin-right: 25px;
+}
+
+.two-dots, .three-dots {
+    display: flex;
+    justify-content: space-between;
+}
+
+.two-dots .dot:nth-child(3) {
+    align-self: flex-end;
+}
+
+.three-dots .dot:nth-child(3) {
+    align-self: center;
+}
+
+.three-dots .dot:nth-child(4) {
+    align-self: flex-end;
+}
+
+.four-dots, .five-dots, .six-dots {
+    display: flex;
+    justify-content: space-between;
+}
+
+.four-dots .column, .five-dots .column, .six-dots .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.five-dots .column:nth-child(3) {
+    justify-content: center;
 }
 
 .shake-dices {
     animation: shake 150ms 2 linear;
 }
 
-.des > li > span {
+.dices > li > span {
     animation: slideIn 1s ease;
 }
 
@@ -143,7 +226,7 @@ img {
     max-width: 250px;
 }
 
-.patisseries > li {
+.pastries > li {
     display: flex;
     flex-direction: column-reverse;
 }
@@ -158,8 +241,8 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FF8066;
-    width: 120px;
+    color: var(--orange);
+    width: 150px;
     padding: 15px 0;
     border: 1px solid;
     border-radius: 25px;
@@ -167,16 +250,25 @@ img {
     background-color: transparent;
 }
 
-.button:hover {
-    color: #FF8066;
-    box-shadow: inset 8em 0 0 0 #C34A36;
+.button:hover,
+.button:focus {
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(255,255,255,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--darkOrange); }
+}
+
+.stop-button {
+    border: 1px solid var(--darkOrange);
 }
 
 button[type=submit], .button2 {
     border-radius: 5px;
     padding: 0.5rem 1rem;
-    color: #FF8066;
-    background-color: #845EC2;
+    color: var(--orange);
+    background-color: var(--purple);
     border: none;
 }
 
@@ -186,8 +278,7 @@ button[type=submit], .button2 {
 
 .message {
     font-size: 20px;
-    color: #FF8066;
-    margin-bottom: 0;
+    color: var(--orange);
 }
 
 #user-name {
@@ -202,12 +293,13 @@ button[type=submit], .button2 {
         object-fit: cover;
     }
 
-    .des > li {
+    .dices > li {
         width: 80px;
         height: 80px;
+        padding: 12px;
     }
 
-    .patisseries > li { 
+    .pastries > li { 
         flex-direction: row-reverse;
         justify-content: start;
         gap: 1rem;

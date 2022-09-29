@@ -23,5 +23,5 @@ export default async function (req, res) {
 
   const dicesLaunch = await launch(dices);
 
-  res.render("game", { dices: dicesLaunch, user: user });
+  res.render("game", { dices: dicesLaunch, user: user, path: req.path });
 }
